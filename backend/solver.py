@@ -13,7 +13,7 @@ grille=[[0,0,-6,-4,-5,-8,0,0,-9],
         [-6,-9,0,-7,0,0,0,-4,-5 ]
         ]
 
-print("\n".join(" ".join(str(-i) for i in l) for l in grille))
+#print("\n".join(" ".join(str(-i) for i in l) for l in grille))
 #completer la grille 
 def completer_grille(grille):
     g = [i for i in range(1,10) for _ in range(9)]
@@ -84,7 +84,7 @@ def rechercher(
     temp_minimale = 1e-7,
     max_iterations = 1e6,
 ):
-    solution_actuelle = solution_initiale
+    solution_actuelle = completer_grille(solution_initiale)
     score_actuel = score(absolut(solution_actuelle))
     best_solution, best_score = solution_actuelle, score_actuel
     iteration = 0
@@ -105,9 +105,9 @@ def rechercher(
         # Réduire la température
         temp *= taux_refroidissement
         iteration += 1
-    return best_solution, best_score
+    return absolut(best_solution), best_score
 
-def main():
+'''def main():
     s = grille_complete
     print("\n".join(" ".join(str(i) for i in l) for l in s))
     print("\n-------------------------------------------")
@@ -119,4 +119,4 @@ def main():
         print("La grille contient ", score_s, "erreurs")
 
 if __name__ == '__main__':
-    main()
+    main()'''
