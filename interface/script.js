@@ -53,17 +53,20 @@ async function solveSudoku() {
   const grid = getGrid();
   console.log("solving....");
 
-  const response = await fetch("http://127.0.0.1:8000/solve", {
-    method: "POST",
+  const response = await fetch(
+    "https://sudoku-solver-m43v.onrender.com/solve",
+    {
+      method: "POST",
 
-    headers: {
-      "Content-Type": "application/json",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({
+        grid: grid,
+      }),
     },
-
-    body: JSON.stringify({
-      grid: grid,
-    }),
-  });
+  );
   const data = await response.json();
   if (data) {
     console.log("solved");
